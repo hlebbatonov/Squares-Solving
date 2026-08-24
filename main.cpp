@@ -1,54 +1,9 @@
-#include <stdio.h>
-#include <TXLib.h>
-#include <math.h>
-#include <stdarg.h>
-#include <string.h>
-
-#define HEAD        "Программа для решения квадратных уравнений version"
-#define VERSION     "1.8"
-#define ACCURACY    10e-5
-#define DEGREE      3
-
-#define SET_TEXT_RED       txSetConsoleAttr(FOREGROUND_LIGHTRED)
-#define SET_TEXT_GREEN     txSetConsoleAttr(FOREGROUND_LIGHTGREEN)
-#define SET_TEXT_YELLOW    txSetConsoleAttr(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY)
-#define SET_TEXT_BLUE      txSetConsoleAttr(FOREGROUND_LIGHTBLUE)
-#define SET_TEXT_CYAN      txSetConsoleAttr(FOREGROUND_LIGHTCYAN)
-#define SET_TEXT_WHITE     txSetConsoleAttr(FOREGROUND_WHITE)
-#define SET_TEXT_PURPLE    txSetConsoleAttr(FOREGROUND_MAGENTA)
-
-#define SET_BG_RED         txSetConsoleAttr(BACKGROUND_RED | FOREGROUND_WHITE)
-#define SET_BG_BLUE        txSetConsoleAttr(BACKGROUND_BLUE | FOREGROUND_WHITE)
-#define SET_BG_GREEN       txSetConsoleAttr(BACKGROUND_GREEN | FOREGROUND_BLACK)
-#define SET_BG_WHITE       txSetConsoleAttr(BACKGROUND_WHITE | FOREGROUND_BLACK)
-
-#define RESET              txSetConsoleAttr(FOREGROUND_LIGHTGRAY)
+#include "common.h"
+#include "solving.h"
+#include "colorprinting.h"
+#include "clearbuffer.h"
 
 
-struct TestKeys
-{
-    double a, b, c;
-    int number_of_roots_ref;
-    double x1_ref, x2_ref;
-};
-
-enum Roots
-{
-    INF = -1,
-    ZERO,
-    ONE,
-    TWO
-};
-
-enum Colors
-{
-    WHITE,
-    GREEN,
-    RED,
-    CYAN,
-    BG_WHITE,
-    YELLOW
-};
 
 enum Choise
 {
@@ -56,37 +11,18 @@ enum Choise
     EXIT = 1,
 };
 
-Roots   SolveEquation           (double coeffs[], double *x1, double *x2);
-
-int     IsEqual                 (double a, double b);
-
 void    OutputRoots             (int number_of_roots, double x1, double x2);
 
 int     InputAllCoeffs          (double coeffs[]);
-
-double  CalculateDiscriminant   (double a, double b, double c);
-
-Roots   SolveLinear             (double coeffs[], double *x1);
-
-Roots   SolveSquare             (double coeffs[], double *x1, double *x2);
-
-double  RoundDoubleToZero       (double fraction);
 
 void    HandleWithOneEquation   ();
 
 Choise  WantToContinue          ();
 
-void    ClearBuffer             (int *corr_input_num);
-
 int     InputOneCoeff           (double *n, int *corr_input_num, int i);
 
-void    printColor              (Colors color, const char str[], ...);
 
-void    switchColor             (Colors color);
 
-void    RunAllTests             ();
-
-int     RunOneTest              (TestKeys test);
 
 int main()
 {
@@ -102,21 +38,6 @@ int main()
 }
 
 
-Roots SolveEquation(double coeffs[], double *x1, double *x2)
-{
-
-    if (IsEqual(coeffs[DEGREE - 3], 0))
-        return (SolveLinear(coeffs, x1));
-
-    else
-        return (SolveSquare(coeffs, x1, x2));
-
-}
-
-int IsEqual(double a, double b)
-{
-    return ((fabs(a - b) < ACCURACY) ? 1: 0);
-}
 
 void OutputRoots(int number_of_roots, double x1, double x2)
 {
@@ -179,62 +100,7 @@ int InputAllCoeffs(double coeffs[])
     return correct_input_coeff;
 }
 
-double CalculateDiscriminant(double a, double b, double c)
-{
-    return b * b - 4 * a * c;
-}
 
-Roots SolveLinear(double coeffs[], double *x1)
-{
-    //solve equation: bx + c = 0
-    double b = coeffs[DEGREE - 2], c = coeffs[DEGREE - 1];
-
-    if (IsEqual(b, 0))
-    {
-        if (IsEqual(c, 0))
-            return INF;
-        else
-            return ZERO;
-    }
-
-    else
-    {
-        *x1 = -c / b;
-        return ONE;
-    }
-}
-
-Roots SolveSquare(double coeffs[], double *x1, double *x2)
-{
-    //solve equation: ax^2 + bx + c = 0
-    double a = coeffs[DEGREE - 3], b = coeffs[DEGREE - 2], c = coeffs[DEGREE - 1];
-
-    double discriminant = CalculateDiscriminant(a, b, c);
-
-    double sqrt_discriminant = 0;
-
-    if (discriminant < 0) return ZERO;
-
-    else if (IsEqual(discriminant, 0))
-    {
-        *x1 = -b / ( 2 * a);
-        return ONE;
-    }
-
-    else
-    {
-        sqrt_discriminant = sqrt(discriminant);
-
-        *x1 = (-b + sqrt_discriminant) / (2 * a);
-        *x2 = (-b - sqrt_discriminant) / (2 * a);
-        return TWO;
-    }
-}
-
-double RoundDoubleToZero(double fraction)
-{
-    return ((IsEqual(fraction, 0) ? 0: fraction));
-}
 
 void HandleWithOneEquation()
 {
@@ -301,15 +167,6 @@ Choise WantToContinue()
     }
 }
 
-void ClearBuffer(int *corr_input_num)
-{
-    int sym = ' ';
-    while ((sym = getchar()) != '\n')
-    {
-        *corr_input_num = 0;
-    }
-}
-
 int InputOneCoeff(double *n, int *corr_input_num, int i)
 {
     printf("%c: ", i + 'a');
@@ -329,171 +186,7 @@ int InputOneCoeff(double *n, int *corr_input_num, int i)
         return 0;
 }
 
-void printColor(Colors color, const char str[], ...)
-{
-    va_list args;
-    va_start(args, str);
-
-    switchColor(color);
-
-    vprintf(str, args);
-
-    va_end(args);
-    RESET;
-}
 
 
-void switchColor(Colors color)
-{
-    switch (color)
-    {
-        case WHITE:
-            SET_TEXT_WHITE;
-            break;
-
-        case GREEN:
-            SET_TEXT_GREEN;
-            break;
-        case CYAN:
-            SET_TEXT_CYAN;
-            break;
-        case RED:
-            SET_TEXT_RED;
-            break;
-        case YELLOW:
-            SET_TEXT_YELLOW;
-            break;
-        case BG_WHITE:
-            SET_BG_WHITE;
-            break;
-        default:
-            RESET;
-            break;
-    }
-}
-
-void RunAllTests()
-{
-    TestKeys all_tests[10] =
-    {
-        {
-            .a = 0,
-            .b = 1,
-            .c = -1,
-            .number_of_roots_ref = ONE,
-            .x1_ref = 1,
-            .x2_ref = 0,
-        },
-
-        {
-            .a = 0,
-            .b = 0,
-            .c = -1,
-            .number_of_roots_ref = ZERO,
-            .x1_ref = 0,
-            .x2_ref = 0,
-        },
-
-        {
-            .a = 10,
-            .b = 0,
-            .c = -10,
-            .number_of_roots_ref = TWO,
-            .x1_ref = 1,
-            .x2_ref = -1,
-        },
-
-        {
-            .a = 0,
-            .b = 0,
-            .c = 0,
-            .number_of_roots_ref = INF,
-            .x1_ref = 0,
-            .x2_ref = 0,
-        },
-
-        {
-            .a = 1,
-            .b = -8,
-            .c = 15,
-            .number_of_roots_ref = TWO,
-            .x1_ref = 5,
-            .x2_ref = 3,
-        },
-
-        {
-            .a = 0,
-            .b = 10,
-            .c = -1,
-            .number_of_roots_ref = ONE,
-            .x1_ref = 0.1,
-            .x2_ref = 0,
-        },
-
-        {
-            .a = 5,
-            .b = 8,
-            .c = -17,
-            .number_of_roots_ref = TWO,
-            .x1_ref = 1.20997,
-            .x2_ref = -2.80997,
-        },
-
-        {
-            .a = 0,
-            .b = -2,
-            .c = -1,
-            .number_of_roots_ref = ONE,
-            .x1_ref = -0.5,
-            .x2_ref = 0,
-        },
-
-        {
-            .a = 2,
-            .b = -9,
-            .c = -10,
-            .number_of_roots_ref = TWO,
-            .x1_ref = 5.422144,
-            .x2_ref = -0.922144,
-        },
-
-        {
-            .a = 0,
-            .b = 1,
-            .c = 0,
-            .number_of_roots_ref = ONE,
-            .x1_ref = 0,
-            .x2_ref = 0,
-        }
-    };
-    for (int i = 0; i < 10; i ++)
-    {
-        RunOneTest(all_tests[i]);
-    }
-
-
-}
-
-
-int RunOneTest(TestKeys test)
-{
-    double x1 = 0, x2 = 0;
-    double coeffs[3] = {test.a, test.b, test.c};
-    Roots number_of_roots = SolveEquation(coeffs, &x1, &x2);
-
-    if (number_of_roots != test.number_of_roots_ref || !IsEqual(x1, test.x1_ref) || !IsEqual(x2, test.x2_ref))
-    {
-        printf("Test FAILED: a = %lg, b = %lg, c = %lg\n"
-               "REFERENCE: %d roots, x1_ref = %lg, x2_ref = %lg\n"
-               "GOT: %d roots, x1 = %lg, x2 = %lg\n",
-               test.a, test.b, test.c, test.number_of_roots_ref, test.x1_ref, test.x2_ref, number_of_roots, x1, x2);
-    }
-    else
-    {
-        printf("Test OK\n");
-    }
-
-    return 0;
-}
 
 

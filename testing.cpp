@@ -1,5 +1,17 @@
 #include "common.h"
-#include "tests.h"
+#include "solving.h"
+
+struct TestKeys
+{
+    double a, b, c;
+    int number_of_roots_ref;
+    double x1_ref, x2_ref;
+};
+
+void RunAllTests();
+
+int RunOneTest(TestKeys test);
+
 
 int main()
 {
