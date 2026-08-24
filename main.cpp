@@ -11,7 +11,7 @@ int main()
     {
         HandleWithOneEquation();
 
-        if (WantToContinue() == EXIT) return 1;
+        if (WantToContinue() == EXIT) return 0;
     }
 }
 
