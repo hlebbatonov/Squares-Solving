@@ -1,6 +1,8 @@
 #include "solving.h"
 #include <math.h>
 
+
+
 Roots SolveEquation(double coeffs[], double *x1, double *x2)
 {
 

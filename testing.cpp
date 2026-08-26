@@ -1,6 +1,8 @@
 #include "common.h"
 #include "solving.h"
 
+#define MAX_TESTS = 10
+
 struct TestKeys
 {
     double a, b, c;
@@ -22,7 +24,7 @@ int main()
 
 void RunAllTests()
 {
-    TestKeys all_tests[10] =
+    TestKeys all_tests[MAX_TESTS] =
     {
         {
             .a = 0,
@@ -114,7 +116,7 @@ void RunAllTests()
             .x2_ref = 0,
         }
     };
-    for (int i = 0; i < 10; i ++)
+    for (int i = 0; i < MAX_TESTS; i ++)
     {
         RunOneTest(all_tests[i]);
     }
