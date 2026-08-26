@@ -1,0 +1,160 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x004987EB в функции SolveSquare() в модуле C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe. Спасибо _txUnhandledExceptionFilter(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x0068245C (32-bit), Flags: Cmdre0, Thread: 0x238C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004987EB in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveSquare()
+# 1 0x00498656 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveEquation()
+# 2 0x0041E942 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: HandleWithOneEquation()
+# 3 0x0041E8B2 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 26 2026 12:47:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Aug 26 2026 13:39:49
+
+Run file:	C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe
+Directory:	C:\Users\Gleb\Documents\Letka\Squares Solving
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x004987EB в функции SolveSquare() в модуле C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe. Спасибо _txUnhandledExceptionFilter(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x0068245C (32-bit), Flags: Cmdre0, Thread: 0x238C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004987EB in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveSquare()
+# 1 0x00498656 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveEquation()
+# 2 0x0041E942 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: HandleWithOneEquation()
+# 3 0x0041E8B2 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 26 2026 12:47:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Aug 26 2026 13:39:49
+
+Run file:	C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe
+Directory:	C:\Users\Gleb\Documents\Letka\Squares Solving
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x004987EB в функции SolveSquare() в модуле C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe. Спасибо _txUnhandledExceptionFilter(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x0068245C (32-bit), Flags: Cmdre0, Thread: 0x12FC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004987EB in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveSquare()
+# 1 0x00498656 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveEquation()
+# 2 0x0041E942 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: HandleWithOneEquation()
+# 3 0x0041E8B2 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 26 2026 12:47:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Aug 26 2026 13:54:13
+
+Run file:	C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe
+Directory:	C:\Users\Gleb\Documents\Letka\Squares Solving
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x004987EB в функции SolveSquare() в модуле C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe. Спасибо _txUnhandledExceptionFilter(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x0068245C (32-bit), Flags: Cmdre0, Thread: 0x12FC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004987EB in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveSquare()
+# 1 0x00498656 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: SolveEquation()
+# 2 0x0041E942 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: HandleWithOneEquation()
+# 3 0x0041E8B2 in C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 26 2026 12:47:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Aug 26 2026 13:54:13
+
+Run file:	C:\Users\Gleb\Documents\Letka\Squares Solving\main.exe
+Directory:	C:\Users\Gleb\Documents\Letka\Squares Solving
+
+--------------------------------------------------

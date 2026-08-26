@@ -29,8 +29,7 @@ enum Colors
     YELLOW
 };
 
-void    printColor              (Colors color, const char str[], ...);
-
-void    switchColor             (Colors color);
+void printColor(Colors color, const char str[], ...);
+void switchColor(Colors color);
 
 #endif

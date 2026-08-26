@@ -4,6 +4,8 @@
 #include "solving.h"
 #include "clearbuffer.h"
 
+#define RANGE 10e10
+
 void OutputRoots(int number_of_roots, double x1, double x2)
 {
     printf("\n");
@@ -121,8 +123,13 @@ int InputOneCoeff(double *n, int *corr_input_num, int i)
     RESET;
 
     ClearBuffer(corr_input_num);
+    if (fabs(*n) > RANGE)
+    {
+        printColor(RED, "Введенный коэффициент %c превысил допустимый диапазон", i + 'a');
+        return 1;
+    }
 
-    if (*corr_input_num == 0)
+    else if (*corr_input_num == 0)
     {
         printColor(RED, "Введенный коэффициент %c не является числом", i + 'a');
         return 1;

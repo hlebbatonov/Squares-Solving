@@ -4,16 +4,11 @@
 #include "userinterface.h"
 #include "colorprinting.h"
 
-
-void    HandleWithOneEquation   ();
-
-
-
-
+// TODO: static keyword
+void HandleWithOneEquation();
 
 int main()
 {
-
     printColor(BG_WHITE, "%s %s\n\n", HEAD, VERSION);
 
     while (true)
@@ -28,7 +23,7 @@ int main()
 
 
 
-
+// TODO: static keyword
 void HandleWithOneEquation()
 {
     double coeffs[DEGREE] = {};
