@@ -10,25 +10,23 @@ void OutputRoots(int number_of_roots, double x1, double x2)
 {
     printf("\n");
 
-
-
     switch(number_of_roots)
         {
             case ZERO:
 
-                printColor(YELLOW, "Нет корней");
+                printColor(YELLOW, "No roots");
 
                 break;
 
             case ONE:
-                printf("Единственный корень: x = ");
+                printf("Single root: x = ");
 
                 printColor(GREEN, "%lg", RoundDoubleToZero(x1));
 
                 break;
 
             case TWO:
-                printf("Два корня: x1 = ");
+                printf("Two roots: x1 = ");
 
                 printColor(GREEN, "%lg", RoundDoubleToZero(x1));
 
@@ -39,7 +37,7 @@ void OutputRoots(int number_of_roots, double x1, double x2)
                 break;
 
             default:
-                printf("Уравнение имеет бесконечное множество решений");
+                printf("Equation has an infinite number of solutions");
                 break;
         }
 
@@ -48,23 +46,59 @@ void OutputRoots(int number_of_roots, double x1, double x2)
 
 int InputAllCoeffs(double coeffs[])
 {
-    int corr_num[DEGREE] = {};
+    printf("Input coefficients of square equation");
 
+    printColor(WHITE, " \"ax^2 + bx + c = 0\":\n");
 
-    printf("Введите коэффициенты квадратного уравнения вида");
+    InputVerdict correct_input_coeff = OK;
 
-    printColor(WHITE, " \"ax^2 + bx + с = 0\":\n");
-
-    int correct_input_coeff = 0;
+    int failed_index = 0;
 
     for (int i = 0; i < DEGREE; i++)
     {
-        if (correct_input_coeff == 1) break;
-
-        correct_input_coeff = InputOneCoeff(&coeffs[i], &corr_num[i], i);
+        if (correct_input_coeff != OK)
+        {
+            failed_index = i - 1;
+            break;
+        }
+        correct_input_coeff = InputOneCoeff(&coeffs[i], i);
     }
 
-    return correct_input_coeff;
+    switch (correct_input_coeff)
+    {
+        case NOTANUM:
+            printColor(RED, "Entered coefficient %c is not a number", failed_index + 'a');
+            return 1;
+            break;
+        case TOOBIG:
+            printColor(RED, "Entered coefficient %c is out of range", failed_index + 'a');
+            return 1;
+            break;
+        case OK: default:
+            return 0;
+            break;
+
+        }
+    if (correct_input_coeff == OK)
+        return 1;
+    else
+        return 0;
+}
+
+InputVerdict InputOneCoeff(double *n, int i)
+{
+    printf("%c: ", i + 'a');
+
+    SET_TEXT_CYAN();
+    int corr_input_num = scanf("%lf", n);
+    RESET();
+
+    if (ClearBuffer() == 0 || corr_input_num == 0)
+        return NOTANUM;
+    else if (fabs(*n) > RANGE)
+        return TOOBIG;
+    else
+        return OK;
 }
 
 Choise WantToContinue()
@@ -74,31 +108,24 @@ Choise WantToContinue()
         char decision = ' ';
         int corr_input_decision = 1;
 
-        printColor(YELLOW, "\n1) Решить новое уравнение");
+        printColor(YELLOW, "\n1) Solve new equation\t");
+        printColor(WHITE, "2) Exit\n");
 
-        printf("   ");
+        printf("Input a number: ");
 
-        printColor(WHITE, "2) Выйти из программы\n");
+        SET_TEXT_CYAN();
+        corr_input_decision = scanf(" %c", &decision);
+        RESET();
 
-        printf("Введите соответствующий номер: ");
-
-        SET_TEXT_CYAN;
-        scanf(" %c", &decision);
-        RESET;
-
-        ClearBuffer(&corr_input_decision);
-
-        printf("\n");
-
-        if (decision == '2' and corr_input_decision == 1)
+        if (decision == END && corr_input_decision == 1 && ClearBuffer() == 1)
         {
-            printColor(WHITE, "Пока-пока!");
+            printColor(WHITE, "\nBye-bye!");
 
             return EXIT;
             break;
         }
 
-        else if (decision == '1' and corr_input_decision == 1)
+        else if (decision == NEWEQUATION && corr_input_decision == 1 && ClearBuffer() == 1)
         {
 
             return CONTINUE;
@@ -108,34 +135,8 @@ Choise WantToContinue()
         else
         {
 
-            printColor(RED, "Некорректный номер\n");
+            printColor(RED, "\nEntered invalid number\n");
         }
 
     }
 }
-
-int InputOneCoeff(double *n, int *corr_input_num, int i)
-{
-    printf("%c: ", i + 'a');
-
-    SET_TEXT_CYAN;
-    *corr_input_num = scanf("%lf", n);
-    RESET;
-
-    ClearBuffer(corr_input_num);
-    if (fabs(*n) > RANGE)
-    {
-        printColor(RED, "Введенный коэффициент %c превысил допустимый диапазон", i + 'a');
-        return 1;
-    }
-
-    else if (*corr_input_num == 0)
-    {
-        printColor(RED, "Введенный коэффициент %c не является числом", i + 'a');
-        return 1;
-    }
-    else
-        return 0;
-}
-
-

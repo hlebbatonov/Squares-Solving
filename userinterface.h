@@ -7,13 +7,26 @@ enum Choise
     EXIT = 1,
 };
 
-void    OutputRoots             (int number_of_roots, double x1, double x2);
+enum UsersInput
+{
+    NEWEQUATION = '1',
+    END = '2'
+};
 
-int     InputAllCoeffs          (double coeffs[]);
+enum InputVerdict
+{
+    OK = 0,
+    NOTANUM = 1,
+    TOOBIG = 2
+};
 
-Choise  WantToContinue          ();
+void         OutputRoots    (int number_of_roots, double x1, double x2);
 
-int     InputOneCoeff           (double *n, int *corr_input_num, int i);
+int          InputAllCoeffs (double coeffs[]);
+
+Choise       WantToContinue ();
+
+InputVerdict InputOneCoeff  (double *n, int i);
 
 
 #endif

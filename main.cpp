@@ -4,8 +4,8 @@
 #include "userinterface.h"
 #include "colorprinting.h"
 
-// TODO: static keyword
-void HandleWithOneEquation();
+
+static void HandleWithOneEquation();
 
 int main()
 {
@@ -19,12 +19,7 @@ int main()
     }
 }
 
-
-
-
-
-// TODO: static keyword
-void HandleWithOneEquation()
+static void HandleWithOneEquation()
 {
     double coeffs[DEGREE] = {};
     double x1 = 0, x2 = 0;

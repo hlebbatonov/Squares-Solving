@@ -7,8 +7,8 @@
 #include <stdarg.h>
 #include <string.h>
 
-#define HEAD        "Программа для решения квадратных уравнений version"
-#define VERSION     "2.0"
+#define HEAD        "Solving square equations program version"
+#define VERSION     "2.1"
 #define ACCURACY    10e-5
 #define DEGREE      3
 

@@ -3,7 +3,6 @@
 
 #include "common.h"
 
-
-void    ClearBuffer             (int *corr_input_num);
+int ClearBuffer();
 
 #endif
