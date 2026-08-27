@@ -33,7 +33,7 @@ void OutputRoots(int number_of_roots, double x1, double x2)
             break;
 
         default:
-            assert((number_of_roots < -1 || number_of_roots > 2) && "Error! invalid number of roots");
+            assert((number_of_roots >= -1 && number_of_roots <= 2) && "Error! invalid number of roots");
     }
 
     printf("\n");

@@ -22,7 +22,7 @@ int main()
 static void HandleWithOneEquation()
 {
     double coeffs[DEGREE] = {};
-    double x1 = 0, x2 = 0;
+    double x1 = NAN, x2 = NAN;
     enum NumOfRoots number_of_roots = NUM_OF_ROOTS_ZERO;
 
     if (InputAllCoeffs(coeffs) != 0)

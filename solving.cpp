@@ -1,7 +1,4 @@
 #include "solving.h"
-#include <math.h>
-
-
 
 NumOfRoots SolveEquation(double coeffs[], double *x1, double *x2)
 {
