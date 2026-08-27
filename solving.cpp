@@ -44,7 +44,7 @@ NumOfRoots SolveLinear(double coeffs[], double *x1)
 NumOfRoots SolveSquare(double coeffs[], double *x1, double *x2)
 {
     //solve equation: ax^2 + bx + c = 0
-    double a = coeffs[DEGREE - 3], b = coeffs[DEGREE - 2], c = coeffs[DEGREE - 1];
+    const double a = coeffs[DEGREE - 3], b = coeffs[DEGREE - 2], c = coeffs[DEGREE - 1];
 
     double discriminant = RoundDoubleToZero(CalculateDiscriminant(a, b, c));
 
