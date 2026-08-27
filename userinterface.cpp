@@ -82,9 +82,11 @@ int InputAllCoeffs(double coeffs[])
 
 InputVerdict InputOneCoeff(double *n, int i)
 {
+    int corr_input_num = 0;
+
     printf("%c: ", i + 'a');
     SET_TEXT_CYAN();
-    int corr_input_num = scanf("%lf", n);
+    corr_input_num = scanf("%lf", n);
     RESET();
 
     if (ClearBuffer() == 0 || corr_input_num == 0)
@@ -112,7 +114,7 @@ Choise WantToContinue()
 
         if (decision == INPUT_END && corr_input_decision == 1 && ClearBuffer() == 1)
         {
-            printColor(WHITE, "\nBye-bye!");
+            printColor(WHITE, "Bye-bye!");
 
             return CHOISE_EXIT;
             break;
@@ -124,7 +126,7 @@ Choise WantToContinue()
         }
         else
         {
-            printColor(RED, "\nEntered invalid number\n");
+            printColor(RED, "Entered invalid number\n");
         }
     }
 }

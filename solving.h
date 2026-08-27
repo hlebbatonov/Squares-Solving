@@ -2,8 +2,9 @@
 #define SOLVING_H
 #include "common.h"
 
-// TODO: rename NumOfRoots
-// TODO: NUM_OF_ROOTS_ZERO
+#define ACCURACY    10e-5
+#define DEGREE      3
+
 enum NumOfRoots
 {
     NUM_OF_ROOTS_INF = -1,

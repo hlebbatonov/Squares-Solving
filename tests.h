@@ -10,8 +10,7 @@ struct TestKeys
     double x1_ref, x2_ref;
 };
 
-void    RunAllTests             ();
-
-int     RunOneTest              (TestKeys test);
+void RunAllTests ();
+int  RunOneTest  (TestKeys test);
 
 #endif

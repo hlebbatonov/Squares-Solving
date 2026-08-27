@@ -117,7 +117,6 @@ int main()
 
 void RunAllTests()
 {
-    // NOTE: do you know about designators?
     for (int i = 0; i < MAX_TESTS; i ++)
     {
         RunOneTest(all_tests[i]);

@@ -9,9 +9,7 @@
 #include <assert.h>
 
 #define HEAD        "Solving square equations program version"
-#define VERSION     "2.1"
-#define ACCURACY    10e-5
-#define DEGREE      3
+#define VERSION     "2.2"
 
 #endif
 
