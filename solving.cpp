@@ -3,7 +3,7 @@
 
 
 
-Roots SolveEquation(double coeffs[], double *x1, double *x2)
+NumOfRoots SolveEquation(double coeffs[], double *x1, double *x2)
 {
 
     if (IsEqual(coeffs[DEGREE - 3], 0))
@@ -24,7 +24,7 @@ double CalculateDiscriminant(double a, double b, double c)
     return b * b - 4 * a * c;
 }
 
-Roots SolveLinear(double coeffs[], double *x1)
+NumOfRoots SolveLinear(double coeffs[], double *x1)
 {
     //solve equation: bx + c = 0
     double b = coeffs[DEGREE - 2], c = coeffs[DEGREE - 1];
@@ -32,19 +32,19 @@ Roots SolveLinear(double coeffs[], double *x1)
     if (IsEqual(b, 0))
     {
         if (IsEqual(c, 0))
-            return INF;
+            return NUM_OF_ROOTS_INF;
         else
-            return ZERO;
+            return NUM_OF_ROOTS_ZERO;
     }
 
     else
     {
         *x1 = -c / b;
-        return ONE;
+        return NUM_OF_ROOTS_ONE;
     }
 }
 
-Roots SolveSquare(double coeffs[], double *x1, double *x2)
+NumOfRoots SolveSquare(double coeffs[], double *x1, double *x2)
 {
     //solve equation: ax^2 + bx + c = 0
     double a = coeffs[DEGREE - 3], b = coeffs[DEGREE - 2], c = coeffs[DEGREE - 1];
@@ -53,12 +53,12 @@ Roots SolveSquare(double coeffs[], double *x1, double *x2)
 
     double sqrt_discriminant = 0;
 
-    if (discriminant < 0) return ZERO;
+    if (discriminant < 0) return NUM_OF_ROOTS_ZERO;
 
     else if (IsEqual(discriminant, 0))
     {
         *x1 = -b / ( 2 * a);
-        return ONE;
+        return NUM_OF_ROOTS_ONE;
     }
 
     else
@@ -67,7 +67,7 @@ Roots SolveSquare(double coeffs[], double *x1, double *x2)
 
         *x1 = (-b + sqrt_discriminant) / (2 * a);
         *x2 = (-b - sqrt_discriminant) / (2 * a);
-        return TWO;
+        return NUM_OF_ROOTS_TWO;
     }
 }
 

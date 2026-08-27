@@ -6,6 +6,7 @@
 #include <math.h>
 #include <stdarg.h>
 #include <string.h>
+#include <assert.h>
 
 #define HEAD        "Solving square equations program version"
 #define VERSION     "2.1"

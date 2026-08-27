@@ -3,21 +3,21 @@
 
 enum Choise
 {
-    CONTINUE = 0,
-    EXIT = 1,
+    CHOISE_CONTINUE = 0,
+    CHOISE_EXIT = 1,
 };
 
 enum UsersInput
 {
-    NEWEQUATION = '1',
-    END = '2'
+    INPUT_NEWEQUATION = '1',
+    INPUT_END = '2'
 };
 
 enum InputVerdict
 {
-    OK = 0,
-    NOTANUM = 1,
-    TOOBIG = 2
+    VERDICT_OK = 0,
+    VERDICT_NOTANUM = 1,
+    VERDICT_TOOBIG = 2
 };
 
 void         OutputRoots    (int number_of_roots, double x1, double x2);

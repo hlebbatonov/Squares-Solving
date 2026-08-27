@@ -1,7 +1,7 @@
 #include "common.h"
 #include "solving.h"
 
-#define MAX_TESTS = 10
+#define MAX_TESTS 10
 
 struct TestKeys
 {
@@ -10,21 +10,7 @@ struct TestKeys
     double x1_ref, x2_ref;
 };
 
-void RunAllTests();
-
-int RunOneTest(TestKeys test);
-
-
-int main()
-{
-
-    RunAllTests();
-
-}
-
-void RunAllTests()
-{
-    TestKeys all_tests[MAX_TESTS] =
+const TestKeys all_tests[MAX_TESTS] =
     {
         {
             .a = 0,
@@ -116,12 +102,26 @@ void RunAllTests()
             .x2_ref = 0,
         }
     };
+
+void RunAllTests();
+
+int RunOneTest(TestKeys test);
+
+
+int main()
+{
+
+    RunAllTests();
+
+}
+
+void RunAllTests()
+{
+    // NOTE: do you know about designators?
     for (int i = 0; i < MAX_TESTS; i ++)
     {
         RunOneTest(all_tests[i]);
     }
-
-
 }
 
 
@@ -129,8 +129,9 @@ int RunOneTest(TestKeys test)
 {
     double x1 = 0, x2 = 0;
     double coeffs[3] = {test.a, test.b, test.c};
-    Roots number_of_roots = SolveEquation(coeffs, &x1, &x2);
+    NumOfRoots number_of_roots = SolveEquation(coeffs, &x1, &x2);
 
+    // TODO: in future: think about NAN (initialization and NAN-tests)
     if (number_of_roots != test.number_of_roots_ref || !IsEqual(x1, test.x1_ref) || !IsEqual(x2, test.x2_ref))
     {
         printf("Test FAILED: a = %lg, b = %lg, c = %lg\n"
@@ -139,9 +140,7 @@ int RunOneTest(TestKeys test)
                test.a, test.b, test.c, test.number_of_roots_ref, test.x1_ref, test.x2_ref, number_of_roots, x1, x2);
     }
     else
-    {
         printf("Test OK\n");
-    }
 
     return 0;
 }

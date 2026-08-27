@@ -15,7 +15,7 @@ int main()
     {
         HandleWithOneEquation();
 
-        if (WantToContinue() == EXIT) return 0;
+        if (WantToContinue() == CHOISE_EXIT) return 0;
     }
 }
 
@@ -23,12 +23,11 @@ static void HandleWithOneEquation()
 {
     double coeffs[DEGREE] = {};
     double x1 = 0, x2 = 0;
-    enum Roots number_of_roots = ZERO;
+    enum NumOfRoots number_of_roots = NUM_OF_ROOTS_ZERO;
 
     if (InputAllCoeffs(coeffs) != 0)
     {
-        printf("\n\n");
-
+        printf("\n");
     }
     else
     {
@@ -36,8 +35,3 @@ static void HandleWithOneEquation()
         OutputRoots(number_of_roots, x1, x2);
     }
 }
-
-
-
-
-
